@@ -2,6 +2,7 @@ import express from 'express';
 import { addQuestion, createQuiz, deleteQuestion, getAllQuestions, getAllQuiz, updateQuestion, updateQuiz, deleteQuiz } from '../../controllers/admin/quiz.controller.js';
 import { getAllUser } from '../../controllers/admin/users.controller.js';
 import { errorResponse } from '../../utils/responseHandler.js';
+import { addCodingProblem, getAllProblems } from '../../controllers/admin/codingProblem.controller.js';
 
 const adminQuiz = express.Router();
 
@@ -49,6 +50,8 @@ adminQuiz.delete('/delete-question', (req, res) => {
 });
 adminQuiz.delete("/delete-question/:id", deleteQuestion);
 
-
+// ************************Coding Problem Routes************************************
+adminQuiz.post('/add-problem', addCodingProblem);
+adminQuiz.get('/all-problems', getAllProblems);
 
 export default adminQuiz;
