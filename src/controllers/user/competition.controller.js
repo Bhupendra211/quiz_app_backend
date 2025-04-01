@@ -30,7 +30,8 @@ export const getQuestions = asyncHandler(async (req, res) => {
             if (questions.length === 0) {
                 return errorResponse(res, 404, "No Questions Found", null);
             }
-            await client.set(questionsCacheKey, JSON.stringify(questions), { EX: 60 * 60 * 3 });
+            await client.set(questionsCacheKey, JSON.stringify(questions), "EX",60 * 60 * 3 );
+            
         } else {
             questions = JSON.parse(questions);
         }
